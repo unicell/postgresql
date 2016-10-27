@@ -1,6 +1,8 @@
 # file: postgresql/tasks/users_privileges.yml
 
 - name: PostgreSQL | Update the user privileges
+  vars:
+      ansible_ssh_pipelining: true
   postgresql_user:
     name: "{{item.name}}"
     db: "{{item.db | default(omit)}}"
